@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red {
+      color: red;
+    }
+
+    .blue {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="test">
+    你好，
+    <span>{{content}}</span>
+    <p>{{description}}</p>
+    <ul>
+      <li v-for="(key) in list">
+        {{key.a}}: {{key.b}}
+      </li>
+    </ul>
+    <input type="text" v-model="obj.x" v-on:keydown="enter" />
+    {{obj.x}}
+    <br />
+    <img v-bind:src="imgSrc" />
+    <br />
+    <span v-bind:class="{red: obj.x < 2}">行1</span>
+    <br />
+    <span v-bind:class="haha">行2</span>
+  </div>
+
+  <script type="module">
+    import Vue from "../core/index.js";
+
+    new Vue({
+      el: "test",
+      data: {
+        content: "very good",
+        description: "panda say hello",
+        list: [
+          { a: "panda", b: "18" },
+          { a: "monkey", b: 20 }
+        ],
+        obj: {
+          x: 1,
+          y: 2
+        },
+        imgSrc: "./a.png",
+        haha: "red"
+      },
+      created() {
+        console.log("hello");
+      },
+      methods: {
+        enter() {
+          console.log("enter");
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
